@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   /* --link-color-hover: #c3cff4; */
   /* --link-color-active: #fff; */
   /* --link-color-active-bg: #1f1c2e; */
-  /* --projects-section: #fff; */
+  --projects-section: #fff;
   /* --message-box-hover: #fafcff; */
   /* --message-box-border: #e9ebf0; */
   /* --more-list-bg: #fff; */
@@ -61,20 +61,20 @@ ol {
 
 img{
   display: block;
-  width: 100%;
 }
 
 `;
 
-export const Section = styled.div`
+export const Container = styled.div`
   width: 1400px;
   padding: 0 15px;
+  margin: 0 auto;
 `;
 
-export const Header = styled.div`
+export const Header = styled.header`
   width: 100%;
   height: 100%;
   padding: 15px 0;
   margin-bottom: 10px;
-  background-color: var(--app-container);
+  background-color: var(--projects-section);
 `;
