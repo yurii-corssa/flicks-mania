@@ -1,39 +1,55 @@
-// import { useState } from 'react';
+import SearchList from 'SearchList/SearchList';
+import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import { fetchAPI } from 'services/api';
 
 const Movies = () => {
-  // const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchValue = searchParams.get('query') ?? '';
-  const location = useLocation();
+
+  useEffect(() => {
+    const query = searchParams.get('query') ?? '';
+
+    fetchAPI(`/search/movie?query=${query}`)
+      .then(response => setMovies(response.results))
+      .catch(error => console.log(error));
+  }, [searchParams]);
 
   // console.log(searchValue);
-  // console.log(searchParams);
+  // console.log(searchParams)
+  // console.log(movies);
 
   const onSubmit = e => {
     e.preventDefault();
-    // console.log(e);
-  };
+    const query = e.target.elements.query.value;
 
-  const updateQueryString = query => {
-    const nextParams = query !== '' ? { query } : {};
-    setSearchParams(nextParams);
+    if (!query) {
+      alert('Enter name of movie to search');
+      return;
+    }
+    setSearchParams({ query });
+    e.target.reset();
   };
 
   return (
     <main>
-      <h1>Movies</h1>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search"
-          value={searchValue}
-          onChange={e => updateQueryString(e.target.value)}
-        />
-        <button type="submit">search</button>
-      </form>
+      <section>
+        <h1>Movies</h1>
+        <form onSubmit={onSubmit}>
+          <input
+            type="text"
+            name="query"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search"
+          />
+          <button type="submit">search</button>
+        </form>
+        {/* <p>{console.log(movies)}</p> */}
+      </section>
+      <section>
+        <ul>{movies.length ? <SearchList movies={movies} /> : ''}</ul>
+      </section>
     </main>
   );
 };

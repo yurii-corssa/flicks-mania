@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchAPI } from 'services/api';
 
@@ -6,7 +6,9 @@ const MovieDetails = () => {
   const [movieData, setMovieData] = useState({});
   const [genres, setGenres] = useState([]);
   const { movieId } = useParams();
-  const location = useLocation();
+  const location = useRef(useLocation());
+
+  console.log('ref', location.current);
 
   useEffect(() => {
     fetchAPI(`/movie/${movieId}`)
@@ -22,7 +24,7 @@ const MovieDetails = () => {
 
   return (
     <main>
-      <Link to={location.state?.from ?? '/'}>back</Link>
+      <Link to={location.current?.state?.from ?? '/'}>back</Link>
       <section>
         <div>
           <img
