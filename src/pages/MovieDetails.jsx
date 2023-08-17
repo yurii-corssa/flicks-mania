@@ -1,11 +1,12 @@
 import { Suspense, useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchAPI } from 'services/api';
 
 const MovieDetails = () => {
-  const { movieId } = useParams();
   const [movieData, setMovieData] = useState({});
   const [genres, setGenres] = useState([]);
+  const { movieId } = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     fetchAPI(`/movie/${movieId}`)
@@ -16,14 +17,12 @@ const MovieDetails = () => {
       })
       .catch(error => console.log(error));
   }, [movieId]);
-  console.log(movieData);
-  console.log(genres);
 
   const defaultImg = '';
-  // const { poster_path } = movieData;
 
   return (
     <main>
+      <Link to={location.state?.from ?? '/'}>back</Link>
       <section>
         <div>
           <img
