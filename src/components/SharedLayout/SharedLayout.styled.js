@@ -1,27 +1,10 @@
 import { createGlobalStyle, styled } from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const GlobalStyle = createGlobalStyle`
+ 
 
-:root {
-  --app-container: #f3f6fd;
-  /* --app-container: #111827; */
-  --main-color: #1f1c2e;
-  /* --secondary-color: #4A4A4A; */
-  /* --link-color: #1f1c2e; */
-  /* --link-color-hover: #c3cff4; */
-  /* --link-color-active: #fff; */
-  /* --link-color-active-bg: #1f1c2e; */
-  --projects-section: #fff;
-  /* --message-box-hover: #fafcff; */
-  /* --message-box-border: #e9ebf0; */
-  /* --more-list-bg: #fff; */
-  /* --more-list-bg-hover:  #f6fbff; */
-  /* --more-list-shadow: rgba(209, 209, 209, 0.4); */
-  /* --button-bg: #1f1c24; */
-  --search-area-bg: #fff;
-  /* --star: #1ff1c2e; */
-  /* --message-btn: #fff; */
-}
+
 
 * {
     margin: 0;
@@ -30,11 +13,11 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body {
-    font-family: 'Exo 2', sans-serif;
-    font-size: 14px;
+    font-family: 'Albert Sans', 'Albert Sans Placeholder', sans-serif;
+    font-size: 16px;
     display: flex;
     justify-content: center;
-    background-color: var(--app-container);
+    background-color: #f1f1f1;
 }
 
 button {
@@ -63,18 +46,55 @@ img{
   display: block;
 }
 
+section{padding: 100px 100px 100px 100px;}
+
 `;
 
 export const Container = styled.div`
-  width: 1400px;
-  padding: 0 15px;
+  width: 1200px;
   margin: 0 auto;
+  background-color: #fff;
 `;
 
 export const Header = styled.header`
   width: 100%;
   height: 100%;
-  padding: 15px 0;
-  margin-bottom: 10px;
-  background-color: var(--projects-section);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 100px 100px 0px 100px;
+  margin-bottom: 20px;
+  & p {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+`;
+
+export const NavList = styled.ul`
+  display: flex;
+  gap: 50px;
+`;
+
+export const NavLinkStyled = styled(NavLink)`
+  display: block;
+  height: 40px;
+  padding: 10px 20px 10px 20px;
+  &.active {
+    border-radius: 100px;
+    border: 1px solid #000000;
+  }
+`;
+
+export const Footer = styled.footer`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 100px 100px 100px;
+  background-color: #000000;
+`;
+
+export const Text = styled.p`
+  color: #a8dadc;
+  line-height: 1.5;
+  text-align: center;
 `;

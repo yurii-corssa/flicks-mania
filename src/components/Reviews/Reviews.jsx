@@ -4,7 +4,7 @@ import { fetchAPI } from 'services/api';
 
 const Reviews = () => {
   const { movieId } = useParams();
-  const [reviews, setReviews] = useState('');
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     fetchAPI(`/movie/${movieId}/reviews`)
@@ -13,18 +13,12 @@ const Reviews = () => {
   }, [movieId]);
 
   return reviews.length ? (
-    <ul>
-      {reviews.map(review => {
-        const { author, content, id } = review;
-
-        return (
-          <li key={id}>
-            <p>{author}</p>
-            <p>{content}</p>
-          </li>
-        );
-      })}
-    </ul>
+    reviews.map(({ author, content, id }) => (
+      <li key={id}>
+        <p>{author}</p>
+        <p>{content}</p>
+      </li>
+    ))
   ) : (
     <p>We don't have any reviews for this movie</p>
   );

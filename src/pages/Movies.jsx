@@ -1,6 +1,6 @@
 import SearchList from 'SearchList/SearchList';
 import { useEffect, useState } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { fetchAPI } from 'services/api';
 
 const Movies = () => {
@@ -14,10 +14,6 @@ const Movies = () => {
       .then(response => setMovies(response.results))
       .catch(error => console.log(error));
   }, [searchParams]);
-
-  // console.log(searchValue);
-  // console.log(searchParams)
-  // console.log(movies);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -45,7 +41,6 @@ const Movies = () => {
           />
           <button type="submit">search</button>
         </form>
-        {/* <p>{console.log(movies)}</p> */}
       </section>
       <section>
         <ul>{movies.length ? <SearchList movies={movies} /> : ''}</ul>

@@ -8,8 +8,6 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useRef(useLocation());
 
-  console.log('ref', location.current);
-
   useEffect(() => {
     fetchAPI(`/movie/${movieId}`)
       .then(response => {
@@ -60,9 +58,11 @@ const MovieDetails = () => {
             <Link to="reviews">Reviews</Link>
           </li>
         </ul>
-        <Suspense fallback={<div>Loading subpage...</div>}>
-          <Outlet />
-        </Suspense>
+        <ul>
+          <Suspense fallback={<div>Loading subpage...</div>}>
+            <Outlet />
+          </Suspense>
+        </ul>
       </section>
     </main>
   );
