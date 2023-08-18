@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { fetchAPI } from 'services/api';
 import {
   CardWrapper,
+  Poster,
   TextCard,
   TextWrapper,
   TitleCard,
@@ -18,13 +19,14 @@ const TrendingList = () => {
       .catch(error => console.log(error));
   }, []);
 
-  const defaultImg = '';
+  const defaultImg =
+    'https://via.placeholder.com/200x300.png?text=Poster+Not+Available';
 
   return movies.map(movie => {
     return (
       <CardWrapper key={movie.id}>
         <Link to={`movies/${movie.id}`} state={{ from: location }}>
-          <img
+          <Poster
             src={
               movie.poster_path
                 ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
@@ -33,7 +35,6 @@ const TrendingList = () => {
             width={200}
             alt="poster"
           />
-          {console.log(movie)}
           <TextWrapper>
             <TitleCard>{movie.title}</TitleCard>
             <TextCard>{movie.overview}</TextCard>

@@ -5,6 +5,8 @@ export const Hero = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #a8dadc;
+  background-color: #1d3557;
   padding: 0px 100px 100px 100px;
 `;
 
@@ -19,7 +21,7 @@ export const Title = styled.h1`
 
 export const Text = styled.p`
   max-width: 800px;
-  color: #1d3557;
+  color: #a8dadc;
   font-size: 20px;
   line-height: 1.4;
   text-align: center;

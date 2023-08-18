@@ -4,11 +4,13 @@ import {
   Footer,
   GlobalStyle,
   Header,
+  LogoWrapper,
   NavLinkStyled,
   NavList,
   Text,
 } from './SharedLayout.styled';
 import { Outlet } from 'react-router-dom';
+import MovieFilterRoundedIcon from '@mui/icons-material/MovieFilterRounded';
 
 const SharedLayout = () => {
   return (
@@ -16,7 +18,10 @@ const SharedLayout = () => {
       <GlobalStyle />
       <Container>
         <Header>
-          <p>Flicks Mania</p>
+          <LogoWrapper>
+            <MovieFilterRoundedIcon sx={{ fontSize: 40 }} />
+            <p>Flicks Mania</p>
+          </LogoWrapper>
           <nav>
             <NavList>
               <li>

@@ -62,12 +62,19 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 100px 100px 0px 100px;
-  margin-bottom: 20px;
+  padding: 50px 100px 20px 100px;
+  color: #f1faee;
+  background-color: #1d3557;
   & p {
     font-weight: 700;
     text-transform: uppercase;
   }
+`;
+
+export const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
 `;
 
 export const NavList = styled.ul`
@@ -81,7 +88,7 @@ export const NavLinkStyled = styled(NavLink)`
   padding: 10px 20px 10px 20px;
   &.active {
     border-radius: 100px;
-    border: 1px solid #000000;
+    border: 1px solid #f1faee;
   }
 `;
 

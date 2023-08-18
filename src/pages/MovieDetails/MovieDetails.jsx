@@ -1,6 +1,16 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import { fetchAPI } from 'services/api';
+import {
+  DetailsContainer,
+  LinkStyled,
+  MovieDetailsSection,
+  SubTitle,
+  Text,
+  TextWrapper,
+  Title,
+} from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [movieData, setMovieData] = useState({});
@@ -18,36 +28,40 @@ const MovieDetails = () => {
       .catch(error => console.log(error));
   }, [movieId]);
 
-  const defaultImg = '';
+  const defaultImg =
+    'https://via.placeholder.com/400x600.png?text=Poster+Not+Available';
 
   return (
     <main>
-      <Link to={location.current?.state?.from ?? '/'}>back</Link>
-      <section>
-        <div>
+      <MovieDetailsSection>
+        <LinkStyled to={location.current?.state?.from ?? '/'}>
+          <ArrowBackIosRoundedIcon />
+          Back
+        </LinkStyled>
+        <DetailsContainer>
           <img
             src={
               movieData.poster_path
                 ? `https://image.tmdb.org/t/p/w500/${movieData.poster_path}`
                 : defaultImg
             }
-            width={250}
+            width={400}
             alt="poster"
           />
-          <div>
-            <h1>{movieData.title}</h1>
-            <p>Use score: {movieData.vote_average}</p>
-            <h2>Overview</h2>
-            <p>{movieData.overview}</p>
-            <h2>Genres</h2>
-            <p>
+          <TextWrapper>
+            <Title>{movieData.title}</Title>
+            <Text>Use score: {movieData.vote_average?.toFixed(1)}</Text>
+            <SubTitle>Overview</SubTitle>
+            <Text>{movieData.overview}</Text>
+            <SubTitle>Genres</SubTitle>
+            <Text>
               {genres.map(g => (
                 <span key={g}>{g}</span>
               ))}
-            </p>
-          </div>
-        </div>
-      </section>
+            </Text>
+          </TextWrapper>
+        </DetailsContainer>
+      </MovieDetailsSection>
       <section>
         <p>Additional information</p>
         <ul>
