@@ -1,15 +1,21 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import { fetchAPI } from 'services/api';
 import {
+  BtnInfo,
+  BtnInfoList,
+  BtnInfoListItem,
   DetailsContainer,
+  InfoContainer,
+  InfoSection,
   LinkStyled,
   MovieDetailsSection,
   SubTitle,
   Text,
   TextWrapper,
   Title,
+  TitleInfo,
 } from './MovieDetails.styled';
 
 const MovieDetails = () => {
@@ -62,22 +68,22 @@ const MovieDetails = () => {
           </TextWrapper>
         </DetailsContainer>
       </MovieDetailsSection>
-      <section>
-        <p>Additional information</p>
-        <ul>
-          <li>
-            <Link to="cast">Cast</Link>
-          </li>
-          <li>
-            <Link to="reviews">Reviews</Link>
-          </li>
-        </ul>
-        <ul>
+      <InfoSection>
+        <TitleInfo>Additional information</TitleInfo>
+        <BtnInfoList>
+          <BtnInfoListItem>
+            <BtnInfo to="cast">Cast</BtnInfo>
+          </BtnInfoListItem>
+          <BtnInfoListItem>
+            <BtnInfo to="reviews">Reviews</BtnInfo>
+          </BtnInfoListItem>
+        </BtnInfoList>
+        <InfoContainer>
           <Suspense fallback={<div>Loading subpage...</div>}>
             <Outlet />
           </Suspense>
-        </ul>
-      </section>
+        </InfoContainer>
+      </InfoSection>
     </main>
   );
 };

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 export const MovieDetailsSection = styled.section`
@@ -36,7 +36,7 @@ export const TextWrapper = styled.div`
 
 export const Title = styled.h1`
   font-family: 'Wix Madefor Display', sans-serif;
-  color: #000;
+  color: #1d3557;
   font-size: 82px;
   line-height: 1.2;
 `;
@@ -53,4 +53,63 @@ export const Text = styled.p`
   gap: 10px;
   line-height: 1.4;
   margin-bottom: 20px;
+`;
+
+export const InfoSection = styled.section`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #f1faee;
+`;
+
+export const TitleInfo = styled.h2`
+  font-family: 'Wix Madefor Display', sans-serif;
+  color: #1d3557;
+  font-size: 48px;
+  line-height: 1.2;
+  margin-bottom: 50px;
+`;
+
+export const BtnInfoList = styled.ul`
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+`;
+
+export const BtnInfoListItem = styled.li`
+  display: flex;
+  align-items: center;
+  padding-right: 100px;
+  height: 40px;
+
+  &:not(:first-child) {
+    position: relative;
+    padding-left: 100px;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(0, -50%);
+      content: '|';
+      font-weight: 600;
+      color: #1d3557;
+    }
+  }
+`;
+
+export const BtnInfo = styled(NavLink)`
+  width: 100%;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #1d3557;
+
+  &.active {
+    color: #e63946;
+  }
+`;
+
+export const InfoContainer = styled.div`
+  padding-top: 50px;
 `;
