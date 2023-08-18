@@ -37,7 +37,7 @@ export const TextWrapper = styled.div`
 export const Title = styled.h1`
   font-family: 'Wix Madefor Display', sans-serif;
   color: #1d3557;
-  font-size: 82px;
+  font-size: 62px;
   line-height: 1.2;
 `;
 

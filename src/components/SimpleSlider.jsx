@@ -24,6 +24,16 @@ function SamplePrevArrow(props) {
   );
 }
 
+const rows = children => {
+  if (children.length > 15) {
+    return 2;
+  }
+  if (children.length > 30) {
+    return 3;
+  }
+  return 1;
+};
+
 export default function SimpleSlider({ children }) {
   const settings = {
     dots: true,
@@ -34,6 +44,8 @@ export default function SimpleSlider({ children }) {
     autoplay: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    rows: rows(children),
   };
+
   return <Slider {...settings}>{children}</Slider>;
 }

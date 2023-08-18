@@ -22,7 +22,8 @@ const MovieDetails = () => {
   const [movieData, setMovieData] = useState({});
   const [genres, setGenres] = useState([]);
   const { movieId } = useParams();
-  const location = useRef(useLocation());
+  const location = useLocation();
+  const locationRef = useRef(location);
 
   useEffect(() => {
     fetchAPI(`/movie/${movieId}`)
@@ -40,7 +41,7 @@ const MovieDetails = () => {
   return (
     <main>
       <MovieDetailsSection>
-        <LinkStyled to={location.current?.state?.from ?? '/'}>
+        <LinkStyled to={locationRef.current?.state?.from ?? '/'}>
           <ArrowBackIosRoundedIcon />
           Back
         </LinkStyled>

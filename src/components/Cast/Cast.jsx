@@ -25,6 +25,7 @@ const Cast = () => {
 
   const defaultAvatar =
     'https://via.placeholder.com/100x150.png?text=Avatar+Not+Available';
+
   return (
     <SimpleSliderStyled>
       {cast.map(({ profile_path, name, character, id }) => (
