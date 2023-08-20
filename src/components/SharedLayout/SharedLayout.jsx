@@ -5,12 +5,14 @@ import {
   GlobalStyle,
   Header,
   LogoWrapper,
+  Main,
   NavLinkStyled,
   NavList,
   Text,
 } from './SharedLayout.styled';
 import { Outlet } from 'react-router-dom';
 import MovieFilterRoundedIcon from '@mui/icons-material/MovieFilterRounded';
+import { Loader } from 'components/Loader/Loader';
 
 const SharedLayout = () => {
   return (
@@ -33,9 +35,11 @@ const SharedLayout = () => {
             </NavList>
           </nav>
         </Header>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Outlet />
-        </Suspense>
+        <Main>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </Main>
         <Footer>
           <Text>© 2023 The Movie Search Engine</Text>
         </Footer>

@@ -1,17 +1,9 @@
-import SearchList from 'components/SearchList/SearchList';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchAPI } from 'services/api';
-import {
-  Button,
-  FindSection,
-  Input,
-  List,
-  SearchForm,
-  SearchSection,
-  Text,
-  Title,
-} from './Movies.styled';
+import { FindSection, SearchSection, Text, Title } from './Movies.styled';
+import MoviesList from 'components/MoviesList/MoviesList';
+import SearchForm from 'components/SearchForm/SearchForm';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -25,38 +17,19 @@ const Movies = () => {
       .catch(error => console.log(error));
   }, [searchParams]);
 
-  const onSubmit = e => {
-    e.preventDefault();
-    const query = e.target.elements.query.value;
-
-    if (!query) {
-      alert('Enter name of movie to search');
-      return;
-    }
+  const onSubmit = query => {
     setSearchParams({ query });
-    e.target.reset();
   };
 
   return (
-    <main>
+    <>
       <FindSection>
         <Title>Find Movies, Explore & Have Fun!</Title>
-        <SearchForm onSubmit={onSubmit}>
-          <Input
-            type="text"
-            name="query"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search..."
-          />
-          <Button type="submit">Search</Button>
-        </SearchForm>
+        <SearchForm onSubmit={onSubmit} />
       </FindSection>
       <SearchSection>
         {movies.length ? (
-          <List>
-            <SearchList movies={movies} />
-          </List>
+          <MoviesList movies={movies} />
         ) : (
           <Text>
             Dive into our fantastic movie search engine to find that perfect
@@ -67,7 +40,7 @@ const Movies = () => {
           </Text>
         )}
       </SearchSection>
-    </main>
+    </>
   );
 };
 

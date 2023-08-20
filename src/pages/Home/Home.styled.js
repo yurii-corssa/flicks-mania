@@ -39,9 +39,3 @@ export const SubTitle = styled.h2`
   line-height: 1.2;
   margin-bottom: 100px;
 `;
-
-export const List = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-`;

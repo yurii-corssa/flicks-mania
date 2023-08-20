@@ -17,9 +17,11 @@ import {
   Title,
   TitleInfo,
 } from './MovieDetails.styled';
+import { Loader } from 'components/Loader/Loader';
+import Poster from 'components/Poster/Poster';
 
 const MovieDetails = () => {
-  const [movieData, setMovieData] = useState({});
+  const [movieData, setMovieData] = useState(null);
   const [genres, setGenres] = useState([]);
   const { movieId } = useParams();
   const location = useLocation();
@@ -35,18 +37,20 @@ const MovieDetails = () => {
       .catch(error => console.log(error));
   }, [movieId]);
 
-  const defaultImg =
-    'https://via.placeholder.com/400x600.png?text=Poster+Not+Available';
+  // const defaultImg =
+  //   'https://via.placeholder.com/400x600.png?text=Poster+Not+Available';
+
+  if (!movieData) return <Loader />;
 
   return (
-    <main>
+    <>
       <MovieDetailsSection>
         <LinkStyled to={locationRef.current?.state?.from ?? '/'}>
           <ArrowBackIosRoundedIcon />
           Back
         </LinkStyled>
         <DetailsContainer>
-          <img
+          {/* <img
             src={
               movieData.poster_path
                 ? `https://image.tmdb.org/t/p/w500/${movieData.poster_path}`
@@ -54,7 +58,8 @@ const MovieDetails = () => {
             }
             width={400}
             alt="poster"
-          />
+          /> */}
+          <Poster image={movieData.poster_path} width={400} height={600} />
           <TextWrapper>
             <Title>{movieData.title}</Title>
             <Text>Use score: {movieData.vote_average?.toFixed(1)}</Text>
@@ -80,12 +85,12 @@ const MovieDetails = () => {
           </BtnInfoListItem>
         </BtnInfoList>
         <InfoContainer>
-          <Suspense fallback={<div>Loading subpage...</div>}>
+          <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </InfoContainer>
       </InfoSection>
-    </main>
+    </>
   );
 };
 

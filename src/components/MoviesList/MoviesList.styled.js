@@ -1,5 +1,11 @@
 import { styled } from 'styled-components';
 
+export const List = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+`;
+
 export const CardWrapper = styled.li`
   width: calc((100% - 40px) / 2);
   height: 300px;
@@ -12,11 +18,11 @@ export const CardWrapper = styled.li`
   }
 `;
 
-export const Poster = styled.img`
-  width: 200px;
-  height: 100%;
-  object-fit: cover;
-`;
+// export const Poster = styled.img`
+//   width: 200px;
+//   height: 100%;
+//   object-fit: cover;
+// `;
 
 export const TextWrapper = styled.div`
   display: flex;

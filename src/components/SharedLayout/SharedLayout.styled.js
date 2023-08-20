@@ -92,6 +92,10 @@ export const NavLinkStyled = styled(NavLink)`
   }
 `;
 
+export const Main = styled.main`
+  background-color: #e63946;
+`;
+
 export const Footer = styled.footer`
   display: flex;
   justify-content: center;

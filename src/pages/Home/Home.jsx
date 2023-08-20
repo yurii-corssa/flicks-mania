@@ -1,9 +1,19 @@
-import TrendingList from 'components/TrendingList/TrendingList';
-import { Hero, List, SubTitle, Text, Title, TopReleases } from './Home.styled';
+import { useEffect, useState } from 'react';
+import { Hero, SubTitle, Text, Title, TopReleases } from './Home.styled';
+import MoviesList from 'components/MoviesList/MoviesList';
+import { fetchAPI } from 'services/api';
 
 const Home = () => {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    fetchAPI('/trending/movie/day')
+      .then(response => setMovies(response.results))
+      .catch(error => console.log(error));
+  }, []);
+
   return (
-    <main>
+    <>
       <Hero>
         <Title>Movies</Title>
         <Text>
@@ -14,11 +24,9 @@ const Home = () => {
       </Hero>
       <TopReleases>
         <SubTitle>Today&apos;s Hottest Releases</SubTitle>
-        <List>
-          <TrendingList />
-        </List>
+        <MoviesList movies={movies} />
       </TopReleases>
-    </main>
+    </>
   );
 };
 

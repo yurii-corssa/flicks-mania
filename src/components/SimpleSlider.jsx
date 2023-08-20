@@ -25,13 +25,8 @@ function SamplePrevArrow(props) {
 }
 
 const rows = children => {
-  if (children.length > 15) {
-    return 2;
-  }
-  if (children.length > 30) {
-    return 3;
-  }
-  return 1;
+  const rows = children.length / 15;
+  return Math.ceil(rows);
 };
 
 export default function SimpleSlider({ children }) {
