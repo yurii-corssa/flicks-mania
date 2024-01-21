@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/flicks-mania/static/js/main.bc1bf3d1.js",
+    "main.js": "/flicks-mania/static/js/main.4141cd79.js",
     "static/js/33.4c9fcc4d.chunk.js": "/flicks-mania/static/js/33.4c9fcc4d.chunk.js",
     "static/css/826.e732bd41.chunk.css": "/flicks-mania/static/css/826.e732bd41.chunk.css",
     "static/js/826.cd8cd478.chunk.js": "/flicks-mania/static/js/826.cd8cd478.chunk.js",
@@ -14,7 +14,7 @@
     "static/media/slick.ttf": "/flicks-mania/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/flicks-mania/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/flicks-mania/index.html",
-    "main.bc1bf3d1.js.map": "/flicks-mania/static/js/main.bc1bf3d1.js.map",
+    "main.4141cd79.js.map": "/flicks-mania/static/js/main.4141cd79.js.map",
     "33.4c9fcc4d.chunk.js.map": "/flicks-mania/static/js/33.4c9fcc4d.chunk.js.map",
     "826.e732bd41.chunk.css.map": "/flicks-mania/static/css/826.e732bd41.chunk.css.map",
     "826.cd8cd478.chunk.js.map": "/flicks-mania/static/js/826.cd8cd478.chunk.js.map",
@@ -25,6 +25,6 @@
     "521.b38c7fd8.chunk.js.map": "/flicks-mania/static/js/521.b38c7fd8.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.bc1bf3d1.js"
+    "static/js/main.4141cd79.js"
   ]
 }
